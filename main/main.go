@@ -16,7 +16,7 @@ var (
 	AccessKeySecret = ""
 	OssEndpoint     = ""
 	//默认配置
-	BucketName = "devcloud-suyi"
+	BucketName = ""
 	//cli
 	uploadFile = ""
 
