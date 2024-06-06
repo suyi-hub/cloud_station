@@ -19,13 +19,15 @@ var (
 
 // 测试aliyum OssSDK
 func TestBuketlist(t *testing.T) {
+	fmt.Println(BucketName)
+
 	lsRes, err := client.ListBuckets()
 	if err != nil {
 		HandleError(err)
 	}
 
 	for _, bucket := range lsRes.Buckets {
-		fmt.Println("ss")
+
 		fmt.Println("Buckets:", bucket.Name)
 	}
 
@@ -34,14 +36,18 @@ func TestBuketlist(t *testing.T) {
 func HandleError(err error) {
 	fmt.Println(err)
 }
-func TestUploadFile(t *testing.T) {
 
-	bucket, err := client.Bucket("my-bucket")
+// 测试上次文件
+func TestUploadFile(t *testing.T) {
+	//bucketname
+	bucket, err := client.Bucket(BucketName)
+	fmt.Println("BucketName")
+	fmt.Println(AccessKeyId)
 	if err != nil {
 		HandleError(err)
 	}
 
-	err = bucket.PutObjectFromFile("my-object", "LocalFile")
+	err = bucket.PutObjectFromFile("mydir/test.go", "oss_test.go")
 	if err != nil {
 		HandleError(err)
 	}
