@@ -12,9 +12,9 @@ import (
 // 修改变量控制程序运行
 var (
 	//程序内置
-	AccessKeyId     = "LTAI5tKoddUi4B2SNyB3zbz3"
-	AccessKeySecret = "KWjCmw9p8XSk6Ey1V70zoINp8LkpCO"
-	OssEndpoint     = "oss-cn-beijing.aliyuncs.com"
+	AccessKeyId     = ""
+	AccessKeySecret = ""
+	OssEndpoint     = ""
 	//默认配置
 	BucketName = "devcloud-suyi"
 	//cli
