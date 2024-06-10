@@ -7,3 +7,7 @@ type Uploader interface {
 type Downloader interface {
 	DownLoad(file_name string, BucketName string) error
 }
+
+type Lister interface {
+	List(bucket_name string) error
+}
