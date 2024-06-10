@@ -12,11 +12,11 @@ import (
 // 修改变量控制程序运行
 var (
 	//程序内置
-	AccessKeyId     = ""
-	AccessKeySecret = ""
-	OssEndpoint     = ""
+	AccessKeyId     = "LTAI5tKoddUi4B2SNyB3zbz3"
+	AccessKeySecret = "KWjCmw9p8XSk6Ey1V70zoINp8LkpCO"
+	OssEndpoint     = "oss-cn-beijing.aliyuncs.com"
 	//默认配置
-	BucketName = ""
+	BucketName = "devcloud-suyi"
 	//cli
 	uploadFile = ""
 
@@ -33,8 +33,10 @@ func Upload(File_path string) error {
 	if err != nil {
 		return err
 	}
+	filename := filepath.Base(File_path)
+	fmt.Println(filename)
 
-	return buket.PutObjectFromFile(File_path, File_path)
+	return buket.PutObjectFromFile(filename, File_path)
 }
 
 func HandleError(err error) {
@@ -96,12 +98,20 @@ func Listload() error {
 }
 
 func Switch(arg []string) {
-	fmt.Println(len(arg))
+	if len(arg) == 1 {
+		Usage()
+		return
+	}
 	switch arg[1] {
 	case "-h":
 		Usage()
 	case "-upload":
-		Upload(arg[2])
+		err := Upload(arg[2])
+		if err == nil {
+			fmt.Println("文件上传成功" + arg[2])
+		} else {
+			fmt.Println("文件上传失败,检查文件是否存在或者路径错误" + arg[2])
+		}
 	case "-download":
 		err := DownLoad(arg[2])
 		if err == nil {
