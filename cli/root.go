@@ -7,6 +7,7 @@ import (
 )
 
 var version bool
+var list bool
 
 var RootCmd = &cobra.Command{
 	Use:     "cloud-station",
@@ -17,6 +18,9 @@ var RootCmd = &cobra.Command{
 		if version {
 			fmt.Println("cloud-station v0.0.1")
 		}
+		if list {
+
+		}
 		return nil
 	},
 }
@@ -24,4 +28,6 @@ var RootCmd = &cobra.Command{
 func init() {
 	f := RootCmd.PersistentFlags()
 	f.BoolVarP(&version, "version", "v", false, "cloud-station 版本信息")
+	f.BoolVarP(&list, "list", "l", false, "文件列表")
+
 }

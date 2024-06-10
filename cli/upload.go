@@ -26,7 +26,6 @@ var UploadCmd = &cobra.Command{
 			if err != nil {
 				fmt.Println(err)
 			}
-			fmt.Println("ssss")
 			uploader = aliyun
 		case "tx":
 		case "aws":
@@ -34,8 +33,11 @@ var UploadCmd = &cobra.Command{
 			return fmt.Errorf("not support oss storage provider")
 		}
 
-		uploader.Upload(bucket_name, file_name, file_name)
-		fmt.Println(file_name)
+		err := uploader.Upload(bucket_name, file_name, file_name)
+		if err != nil {
+			fmt.Println(err)
+		}
+
 		return nil
 	},
 }
